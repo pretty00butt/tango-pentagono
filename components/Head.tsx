@@ -10,6 +10,7 @@ const HeadComponent: NextComponentType = () => {
       <meta name="description" content={config.description} />
 
       <link rel="icon" href="/favicon.ico" />
+      <meta name="viewport" content="width=device-width, user-scalable=no" />
     </Head>
   );
 };
