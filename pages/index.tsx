@@ -1,21 +1,56 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from "next";
-import Logo from "public/tango-pentagono.svg";
-import Triangle from "public/triangle.svg";
 import Image from "next/image";
-import { useState } from "react";
-import ShopComponent from "components/Shop";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+const DEFAULT_MARGIN = 8;
+const text = "PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES";
+
 const Home: NextPage = () => {
+  const [nightColor, setNightColor] = useState(false);
+  const [browserSize, setBrowserSize] = useState(0);
+  const [components, setComponents] = useState([
+    <div key="1" className="text__rolling__content">
+      {text}
+    </div>,
+    <div key="2" className="text__rolling__content">
+      {text}
+    </div>,
+  ]);
   const router = useRouter();
+
+  const handleClickScreen = () => {
+    setNightColor(!nightColor);
+  };
 
   const handleClickShop = () => {
     router.push("/shop");
   };
 
+  const duplicateAnimatedText = () => {
+    setComponents([
+      ...components,
+      <div key={components.length + 1} className="text__rolling__content">
+        {text}
+      </div>,
+    ]);
+  };
+
+  setInterval(() => {
+    duplicateAnimatedText();
+  }, 3000);
+
+  useEffect(() => {
+    setBrowserSize(window.innerWidth);
+
+    window.onresize = () => {
+      setBrowserSize(window.innerWidth);
+    };
+  }, []);
+
   return (
-    <div className="wrapper">
+    <div className="wrapper" onClick={handleClickScreen}>
       <div className="background">
         <div className="triangles">
           <div />
@@ -25,31 +60,37 @@ const Home: NextPage = () => {
         <div className="text upper">
           <div className="text__upper">
             <div className="text__upper__left">
-              Place;
-              <br />
-              Momento Brewers
-              <br />
-              11-1, Sangwon 6 Gil,
-              <br />
-              Sungdong Gu, Seoul KR
-              <br />
-              <br />
-              Concert;
-              <br />
-              Aftwerwork Tango
-              <br />
-              Host; ftto Creatives
+              <div>
+                Place;
+                <br />
+                Momento Brewers
+                <br />
+                11-1, Sangwon 6 Gil,
+                <br />
+                Sungdong Gu, Seoul KR
+              </div>
+              <div>
+                Concert;
+                <br />
+                Aftwerwork Tango
+                <br />
+                Host; ftto Creatives
+              </div>
             </div>
 
             <ol className="text__upper__right">
-              <li>1. Por una cabeza</li>
-              <li>2. Lo que vendra</li>
-              <li>3. Romance del diablo</li>
-              <li>4. Jeanne y paul</li>
-              <li>5. Introduction al angel</li>
-              <li>6. Eramos tan jovenes</li>
-              <li>7. Mumuki</li>
-              <li>8. Concierto para quinteto</li>
+              <div>
+                <li>1. Por una cabeza</li>
+                <li>2. Lo que vendra</li>
+                <li>3. Romance del diablo</li>
+                <li>4. Jeanne y paul</li>
+              </div>
+              <div>
+                <li>5. Introduction al angel</li>
+                <li>6. Eramos tan jovenes</li>
+                <li>7. Mumuki</li>
+                <li>8. Concierto para quinteto</li>
+              </div>
             </ol>
           </div>
           <div className="text__middle">
@@ -82,23 +123,28 @@ const Home: NextPage = () => {
               <br />
             </div>
           </div>
-          <div className="text__bottom">
-            <div>
-              MOMENTO
-              <br />
-              BREWERS
-            </div>
-            <div>FTTO</div>
-            <div>
-              AFTERWORK
-              <br />
-              TANGO
-            </div>
+        </div>
+        <div className="teams">
+          <div>
+            MOMENTO
+            <br />
+            BREWERS
+          </div>
+          <div>FTTO</div>
+          <div>
+            AFTERWORK
+            <br />
+            TANGO
           </div>
         </div>
 
         <div className="logo">
-          <Image alt="tango pentagono" src="/tango-pentagono.svg" width="360px" height="132px" />
+          {/* <Image
+            alt="tango pentagono"
+            src="/tango-pentagono-desktop.svg"
+            width={`${browserSize}px`}
+            height={`${browserSize * 0.14}px`}
+          /> */}
         </div>
         <div className="numbers">
           <div>1</div>
@@ -107,7 +153,7 @@ const Home: NextPage = () => {
         </div>
         <div className="text__rolling__wrapper">
           <div className="text__rolling__inner">
-            <div className="text__rolling">"PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES"</div>
+            <div className="text__rolling">{components}</div>
           </div>
         </div>
 
@@ -128,9 +174,9 @@ const Home: NextPage = () => {
           position: relative;
           width: 100%;
           height: 100%;
-          padding-top: 8px;
-          padding-right: 8px;
-          padding-left: 8px;
+          padding-top: ${DEFAULT_MARGIN}px;
+          padding-right: ${DEFAULT_MARGIN}px;
+          padding-left: ${DEFAULT_MARGIN}px;
           background: white;
           color: black;
           height: 100%;
@@ -140,15 +186,29 @@ const Home: NextPage = () => {
           max-width: 360px;
         }
 
+        @media (min-width: 1440px) {
+          div.wrapper {
+            background-color: ${nightColor ? "black" : "white"};
+          }
+
+          div.background {
+            max-width: 100%;
+            padding-top: ${DEFAULT_MARGIN * 2}px;
+            padding-right: ${DEFAULT_MARGIN * 2}px;
+            padding-left: ${DEFAULT_MARGIN * 2}px;
+            background-color: ${nightColor ? "black" : "white"};
+          }
+        }
+
         .triangles {
           display: flex;
           gap: 4px;
           position: absolute;
-          top: 8px;
-          right: 8px;
+          top: ${DEFAULT_MARGIN}px;
+          right: ${DEFAULT_MARGIN}px;
           bottom: 0px;
-          left: 8px;
-          z-index: 100;
+          left: ${DEFAULT_MARGIN}px;
+          z-index: 103;
         }
 
         .triangles > div {
@@ -160,13 +220,18 @@ const Home: NextPage = () => {
           background-size: 100% 100%;
         }
 
-        .triangles > div {
-          flex-grow: 1;
-          height: 100%;
-          background-image: url("/triangle.svg");
-          background-repeat: no-repeat;
-          background-position: 0 0;
-          background-size: 100% 100%;
+        @media (min-width: 1440px) {
+          .triangles {
+            z-index: ${nightColor ? "100" : "102"};
+            top: ${DEFAULT_MARGIN * 2}px;
+            right: ${DEFAULT_MARGIN * 2}px;
+            bottom: 0px;
+            left: ${DEFAULT_MARGIN * 2}px;
+          }
+
+          .triangles > div {
+            background-image: ${nightColor ? `url("/triangle-night.svg")` : `url("/triangle-desktop.svg")`};
+          }
         }
 
         .text {
@@ -178,9 +243,19 @@ const Home: NextPage = () => {
           display: flex;
         }
 
+        .text > .text__upper {
+          overflow: hidden;
+        }
+
+        .text > .text__upper > .text__upper__left,
+        .text > .text__upper > .text__upper__right {
+          display: flex;
+          flex-direction: column;
+        }
+
         .text > .text__upper > .text__upper__right,
         .text > .text__middle > .text__middle__right {
-          margin-left: 8px;
+          margin-left: ${DEFAULT_MARGIN}px;
         }
 
         .text > .text__upper > .text__upper__left,
@@ -206,16 +281,50 @@ const Home: NextPage = () => {
           line-height: 28px;
           letter-spacing: -0.03em;
           text-align: left;
-          margin-top: 8px;
+          margin-top: ${DEFAULT_MARGIN}px;
         }
 
-        .text__bottom {
+        @media (min-width: 1440px) {
+          .text {
+            z-index: ${nightColor ? 103 : 101};
+          }
+
+          .text__upper,
+          .text__middle {
+            color: ${nightColor ? "white" : "#666"};
+          }
+
+          .text > .text__upper > .text__upper__left,
+          .text > .text__upper > .text__upper__right {
+            flex-direction: row;
+          }
+
+          .text > .text__upper > .text__upper__left > div,
+          .text > .text__upper > .text__upper__right > div {
+            flex: 1;
+
+            font-size: 1.7vw;
+            line-height: 1.7vw;
+          }
+
+          .text__middle {
+            font-size: 6.5vw;
+            line-height: 6.5vw;
+          }
+        }
+
+        .teams {
           color: white;
           display: flex;
-          margin-top: 8px;
+          margin-top: ${DEFAULT_MARGIN}px;
+          position: absolute;
+          top: 50vh;
+          left: 0;
+          right: 0;
+          z-index: 102;
         }
 
-        .text__bottom > div {
+        .teams > div {
           flex: 1;
           text-align: center;
           font-size: 10px;
@@ -225,12 +334,37 @@ const Home: NextPage = () => {
           text-align: center;
         }
 
+        @media (min-width: 1440px) {
+          .teams > div {
+            font-size: 1.7vw;
+            line-height: 1.7vw;
+            color: ${nightColor ? "black" : "white"};
+          }
+        }
+
         .logo {
           position: absolute;
           left: auto;
           right: auto;
           bottom: 64px;
-          z-index: 101;
+          z-index: 102;
+        }
+
+        @media (min-width: 1440px) {
+          .logo {
+            position: absolute;
+            width: 100%;
+            height: 13.4vw;
+            left: 0;
+            right: 0;
+            bottom: 4.5vw;
+            background-image: ${nightColor
+              ? `url("/tango-pentagono-night.svg")`
+              : `url("/tango-pentagono-desktop.svg")`};
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
         }
 
         .numbers {
@@ -253,50 +387,74 @@ const Home: NextPage = () => {
           text-align: center;
         }
 
+        @media (min-width: 1440px) {
+          .numbers {
+            line-height: 0.7vw;
+            bottom: 0.05vw;
+          }
+
+          .numbers > div {
+            font-size: 1.7vw;
+            color: ${nightColor ? "black" : "white"};
+          }
+        }
+
         .text__rolling__wrapper {
           position: absolute;
           left: 0;
           right: 0;
           bottom: 40px;
           width: 100%;
-          background-color: black;
+          background-color: white;
           display: flex;
           justify-content: center;
           height: 20px;
-          z-index: 101;
+          z-index: 102;
           overflow: hidden;
         }
 
         .text__rolling__inner {
-          background-color: white;
           width: 360px;
           height: 100%;
         }
 
         .text__rolling {
-          width: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
           height: 100%;
+          flex: 1;
           background-color: transparent;
           color: black;
           white-space: nowrap;
-          animation: scrollText 15s infinite linear;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-
           font-size: 10px;
           font-weight: 400;
           line-height: 14px;
           letter-spacing: 0em;
           text-align: center;
+          animation: scrollText ${components.length * 5}s linear;
+        }
+
+        @media (min-width: 1440px) {
+          .text__rolling__wrapper {
+            height: 3.9vw;
+            bottom: 0px;
+            background-color: ${nightColor ? "black" : "white"};
+          }
+
+          .text__rolling {
+            font-size: 2.8vw;
+            line-height: 2.8vw;
+            color: ${nightColor ? "#1E1E1E" : "black"};
+          }
         }
 
         @keyframes scrollText {
           from {
-            transform: translateX(100%);
+            transform: translateX(0);
           }
           to {
-            transform: translateX(-100%);
+            transform: translateX(-${components.length * 360}px);
           }
         }
 
@@ -315,6 +473,12 @@ const Home: NextPage = () => {
           line-height: 20px;
           letter-spacing: 0em;
           text-align: center;
+        }
+
+        @media (min-width: 1440px) {
+          .btn-shop {
+            display: none;
+          }
         }
       `}</style>
     </div>
