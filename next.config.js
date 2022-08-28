@@ -2,6 +2,7 @@
 const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
+  basePath: "/tango-pentagono",
   assetPrefix: "/tango-pentagono/",
   webpack(config) {
     config.module.rules.push({
