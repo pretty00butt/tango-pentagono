@@ -2,7 +2,7 @@
 const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
-  assetPrefix: isProd ? "/tango-pentagono/" : "",
+  assetPrefix: "/tango-pentagono/",
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
