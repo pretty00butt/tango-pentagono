@@ -6,7 +6,7 @@ import config from "config";
 const HeadComponent: NextComponentType = () => {
   return (
     <Head>
-      <title>{config.title || "정보공개센터"}</title>
+      <title>{config.title || "Tango Pentágono - FTTO"}</title>
       <meta name="description" content={config.description} />
 
       <link rel="icon" href="/favicon.ico" />

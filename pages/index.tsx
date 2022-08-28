@@ -208,7 +208,7 @@ const Home: NextPage = () => {
           right: ${DEFAULT_MARGIN}px;
           bottom: 0px;
           left: ${DEFAULT_MARGIN}px;
-          z-index: 103;
+          z-index: 100;
         }
 
         .triangles > div {
