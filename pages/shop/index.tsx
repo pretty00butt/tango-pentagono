@@ -13,7 +13,7 @@ const Shop: NextPage = () => {
     router.push("/shop/poster");
   };
   const handleClickTShirts = () => {
-    router.push("/shop/t-shirts");
+    router.push("/shop/t-shirt");
   };
 
   return (
@@ -25,7 +25,7 @@ const Shop: NextPage = () => {
             <div className="desc">Preorder →</div>
           </div>
           <div className="item" onClick={handleClickTShirts}>
-            <div className="title">T Shirts</div>
+            <div className="title">T Shirt</div>
             <div className="desc">Preorder →</div>
           </div>
           <div className="item" onClick={handleClickDripBag}>
