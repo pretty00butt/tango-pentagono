@@ -1,7 +1,6 @@
 name: Deploy to Github Pages
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
@@ -28,5 +27,5 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.PAT }}
+          deploy_key: ${{ secrets.GHPAGES }}
           publish_dir: ./out
