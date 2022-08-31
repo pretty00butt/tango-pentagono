@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 const DEFAULT_MARGIN = 8;
-const text = "PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES";
+const text =
+  "PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES PARA MÍ, EL TANGO SIEMPRE FUE PARA EL OÍDO MÁS QUE PARA LOS PIES ";
 
 const Home: NextPage = () => {
   const [nightColor, setNightColor] = useState(false);
@@ -432,7 +433,7 @@ const Home: NextPage = () => {
           line-height: 14px;
           letter-spacing: 0em;
           text-align: center;
-          animation: scrollText ${components.length * 5}s linear;
+          animation: scrollText 30s linear;
         }
 
         @media (min-width: 1440px) {
@@ -454,7 +455,7 @@ const Home: NextPage = () => {
             transform: translateX(0);
           }
           to {
-            transform: translateX(-${components.length * 360}px);
+            transform: translateX(-100%);
           }
         }
 
