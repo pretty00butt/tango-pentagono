@@ -13,7 +13,7 @@ const ShopItem: NextPage<{ title?: string; desc?: string }> = (props) => {
         return (
           <>
             <div className="item-image">
-              <Image src="/items/drip-bag-1.jpg" alt="드립백 1" width="360" height="360" />
+              <Image priority={true} src="/items/drip-bag-1.jpg" alt="드립백 1" width="360" height="360" />
             </div>
           </>
         );
@@ -21,13 +21,13 @@ const ShopItem: NextPage<{ title?: string; desc?: string }> = (props) => {
         return (
           <>
             <div className="item-image">
-              <Image src="/items/t-shirt-1.jpg" alt="티셔츠 1" width="360" height="165.6" />
+              <Image priority={true} src="/items/t-shirt-1.jpg" alt="티셔츠 1" width="360" height="165.6" />
             </div>
             <div className="item-image">
-              <Image src="/items/t-shirt-2.jpg" alt="티셔츠 2" width="360" height="360" />
+              <Image priority={true} src="/items/t-shirt-2.jpg" alt="티셔츠 2" width="360" height="360" />
             </div>
             <div className="item-image">
-              <Image src="/items/t-shirt-3.jpg" alt="티셔츠 3" width="360" height="360" />
+              <Image priority={true} src="/items/t-shirt-3.jpg" alt="티셔츠 3" width="360" height="360" />
             </div>
           </>
         );
@@ -35,16 +35,16 @@ const ShopItem: NextPage<{ title?: string; desc?: string }> = (props) => {
         return (
           <>
             <div className="item-image">
-              <Image src="/items/poster-1.jpg" alt="포스터 1" width="360" height="360" />
+              <Image priority={true} src="/items/poster-1.jpg" alt="포스터 1" width="360" height="360" />
             </div>
             <div className="item-image">
-              <Image src="/items/poster-2.gif" alt="포스터 2" width="360" height="360" />
+              <Image priority={true} src="/items/poster-2.gif" alt="포스터 2" width="360" height="360" />
             </div>
             <div className="item-image">
-              <Image src="/items/poster-3.jpg" alt="포스터 3" width="360" height="360" />
+              <Image priority={true} src="/items/poster-3.jpg" alt="포스터 3" width="360" height="360" />
             </div>
             <div className="item-image">
-              <Image src="/items/poster-4.jpg" alt="포스터 4" width="360" height="360" />
+              <Image priority={true} src="/items/poster-4.jpg" alt="포스터 4" width="360" height="360" />
             </div>
             <div className="item-image">
               <Image src="/items/poster-5.jpg" alt="포스터 5" width="360" height="360" />

@@ -11,6 +11,11 @@ const HeadComponent: NextComponentType = () => {
 
       <link rel="icon" href="/favicon.ico" />
       <meta name="viewport" content="width=device-width, user-scalable=no" />
+      <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+      <meta property="og:url" content="https://tango-pentagono.ftto.kr" />
+      <meta property="og:title" content={config.title || "Tango Pentágono - FTTO"} />
+      <meta property="og:image" content="https://tango-pentagono.ftto.kr/thumbnail.jpg" />
     </Head>
   );
 };
