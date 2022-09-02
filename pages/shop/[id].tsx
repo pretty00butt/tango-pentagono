@@ -2,10 +2,16 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
 
 const ShopItem: NextPage<{ title?: string; desc?: string }> = (props) => {
   const { query } = useRouter();
+
+  const handleClickPreOrder = () => {
+    if (window) {
+      window.location.href =
+        "https://docs.google.com/forms/d/e/1FAIpQLSddhexoIeiC2cZccq6YHk-I7gULj7KxgHpGsLztTko97EF67A/viewform";
+    }
+  };
 
   const renderImages = () => {
     switch (query.id) {
@@ -68,7 +74,9 @@ const ShopItem: NextPage<{ title?: string; desc?: string }> = (props) => {
         </div>
         <div className="body">{renderImages()}</div>
 
-        <button className="btn-preorder">Preorder →</button>
+        <button className="btn-preorder" onClick={handleClickPreOrder}>
+          Preorder →
+        </button>
       </div>
 
       <style jsx={true}>{`
@@ -145,6 +153,7 @@ const ShopItem: NextPage<{ title?: string; desc?: string }> = (props) => {
           line-height: 20px;
           letter-spacing: 0em;
           text-align: center;
+          cursor: pointer;
         }
       `}</style>
     </div>
@@ -161,12 +170,12 @@ ShopItem.getInitialProps = ({ req, query }): { title?: string; desc?: string } =
     case "poster": {
       title = "Poster";
       desc =
-        "Specification;\n\nB1 Size (70*100cm)\nDigital Print\nPrinted in Germany\nLimited Prints (20 Copies)\nDesigned by CH42 Munich";
+        "Specification;\n\nB1 Size (70*100cm)\nDigital Print\nPrinted in Germany\nLimited Prints (15 Copies)\nDesigned by CH42 Munich";
       break;
     }
     case "drip-bag": {
       title = "Drip Bag";
-      desc = "Specification;\n\nColombia 50%\nGuatemala 30%\nKenya 20%\nProduced by Momento Brewers";
+      desc = "Specification;\n\nSelected by Momento Brewers";
       break;
     }
     case "t-shirt": {

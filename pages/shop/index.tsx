@@ -20,15 +20,18 @@ const Shop: NextPage = () => {
     <div className="wrapper">
       <div className="background">
         <div className="shop">
-          <div className="item" onClick={handleClickPoster}>
+          <div className="item item-poster" onClick={handleClickPoster}>
+            <div className="dimmed" />
             <div className="title">Poster</div>
             <div className="desc">Preorder →</div>
           </div>
-          <div className="item" onClick={handleClickTShirts}>
+          <div className="item item-t-shirt" onClick={handleClickTShirts}>
+            <div className="dimmed" />
             <div className="title">T Shirt</div>
             <div className="desc">Preorder →</div>
           </div>
-          <div className="item" onClick={handleClickDripBag}>
+          <div className="item item-drip-bag" onClick={handleClickDripBag}>
+            <div className="dimmed" />
             <div className="title">Drip Bag</div>
           </div>
           <div className="footer">
@@ -111,6 +114,41 @@ const Shop: NextPage = () => {
           text-align: left;
         }
 
+        .shop > .item {
+          position: relative;
+          mix-blend-mode: luminosity;
+        }
+
+        .shop > .item > .dimmed {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .shop > .item.item-poster {
+          background-image: url(/menus/poster.jpg);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        .shop > .item.item-t-shirt {
+          background-image: url(/menus/t-shirt.jpg);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        .shop > .item.item-drip-bag {
+          background-image: url(/menus/drip-bag.jpg);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
         .shop > .item > .title {
           flex: 1;
           font-size: 28px;
@@ -118,6 +156,7 @@ const Shop: NextPage = () => {
           line-height: 28px;
           letter-spacing: -0.03em;
           text-align: left;
+          z-index: 100;
         }
 
         .shop > .item > .desc {
