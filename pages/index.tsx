@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/inline-script-id */
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from "next";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Script from "next/script";
 
 const DEFAULT_MARGIN = 8;
 const text =
@@ -162,7 +164,6 @@ const Home: NextPage = () => {
           Shop →
         </button>
       </div>
-
       <style jsx={true}>{`
         div.wrapper {
           display: flex;

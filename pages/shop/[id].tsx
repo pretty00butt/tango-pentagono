@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/inline-script-id */
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Script from "next/script";
 
 const ShopItem: NextPage<{ title?: string; desc?: string }> = (props) => {
   const { query } = useRouter();
@@ -78,7 +80,6 @@ const ShopItem: NextPage<{ title?: string; desc?: string }> = (props) => {
           Preorder →
         </button>
       </div>
-
       <style jsx={true}>{`
         div.wrapper {
           display: flex;
@@ -156,6 +157,17 @@ const ShopItem: NextPage<{ title?: string; desc?: string }> = (props) => {
           cursor: pointer;
         }
       `}</style>
+
+      <Script async={true} src="https://www.googletagmanager.com/gtag/js?id=G-F4KC0Z5JHN" />
+      <Script>
+        {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-F4KC0Z5JHN');
+      `}
+      </Script>
     </div>
   );
 };

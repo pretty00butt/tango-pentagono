@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/inline-script-id */
 /* eslint-disable react/no-unescaped-entities */
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
+import Script from "next/script";
 import { useState } from "react";
 
 const Shop: NextPage = () => {
@@ -59,7 +61,6 @@ const Shop: NextPage = () => {
           </div>
         </div>
       </div>
-
       <style jsx={true}>{`
         div.wrapper {
           display: flex;
@@ -168,6 +169,17 @@ const Shop: NextPage = () => {
           text-align: right;
         }
       `}</style>
+
+      <Script async={true} src="https://www.googletagmanager.com/gtag/js?id=G-F4KC0Z5JHN" />
+      <Script>
+        {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'G-F4KC0Z5JHN');
+      `}
+      </Script>
     </div>
   );
 };
